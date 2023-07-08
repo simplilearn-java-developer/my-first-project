@@ -18,4 +18,46 @@
 {{ message }}
 <br>
 <button (click)="onToogle()">Toggle</button>
+<!--<p *ngIf="toggle; else elseBlock">Hello ngIf</p>
+<ng-template #elseBlock><p>Hello ngIf - elseBlock</p></ng-template >-->
 <p *ngIf="toggle">Hello ngIf</p>
+<p *ngIf="!toggle">Hello ngIf - elseBlock</p>
+<br>
+<button (click)="onShow()">Show</button>
+<p *ngIf="show == 'something'">Hello ngIf - show</p>
+
+<p *ngIf="product">
+    <label> Name: </label> {{product.name}}
+    <label> Quantity: </label> {{product.quantity}}
+    <label> ExpiryDate: </label> {{product.expiryDate}}
+</p>
+
+<h2>Product Details</h2>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Quantity (in ml)</th>
+        <th>Expiry Date</th>
+        <th>Odd</th>
+    </tr>
+   <tr *ngFor="let product of products; index as i; odd as o">
+        <td>{{ i + 1 }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.expiryDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{ o }}</td>
+  </tr>
+ </table>
+ <h2>NgSwitch</h2>
+ <div> There are {{ getLength() }} numbers.</div>
+ 
+ <div [ngSwitch]="getLength()">
+     <span *ngSwitchCase=0>No number is added</span>
+     <span *ngSwitchCase=1>One number is added</span>
+     <span *ngSwitchCase=2>Two number is added</span>
+     <span *ngSwitchCase=3>Three number is added</span>
+     <span *ngSwitchDefault>Number bigger than three</span>
+ </div>
+ <button (click)="onAddElement()">Add Element</button>
+
