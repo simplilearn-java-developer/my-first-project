@@ -13,6 +13,12 @@ export class AppComponent {
 
   isDisabled: boolean = true;
 
+  savedMessage: string = "";
+
+  message: string = "";
+
+  toggle: boolean = false;
+
   constructor(){
     setTimeout(()=>{
       this.isDisabled = false;
@@ -25,6 +31,14 @@ export class AppComponent {
 
   getIsDisabled(): boolean {
     return this.isDisabled;
+  }
+
+  onSave(): void{
+     this.savedMessage = "Message Saved";
+  }
+
+  onToogle(): void{
+     this.toggle = !this.toggle;
   }
 
 }

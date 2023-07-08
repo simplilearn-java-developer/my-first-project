@@ -9,3 +9,13 @@
 
 <button [disabled]="isDisabled">Submit</button>
 <button [disabled]="getIsDisabled()">Submit</button>
+<br>
+<button (click)="onSave()">Save</button>
+<br>
+{{ savedMessage }}
+<br>
+<input type="text" [(ngModel)]="message">
+{{ message }}
+<br>
+<button (click)="onToogle()">Toggle</button>
+<p *ngIf="toggle">Hello ngIf</p>
