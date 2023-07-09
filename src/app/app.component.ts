@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './product.model';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-root',
@@ -21,15 +22,19 @@ export class AppComponent {
   toggle: boolean = false;
   show: string = "";
 
-  product: Product;
+  product: Product = {} as Product;
 
   products: Product[];
+  users: User[];
 
   array: number[];
 	length: number;
 
+  temp: string[];
+	
   constructor(){
-    this.product = new Product("hand wash",200,new Date('2022-03-25'));
+    this.product = <Product>{};
+    //this.product = new Product("hand wash",200,new Date('2022-03-25'));
     this.products = [ new Product('Soap', 100, new Date('2022-03-21')),
                       new Product('Toothpaste', 200, new Date('2022-05-09')),
                       new Product('Shampoo', 150, new Date('2022-10-21'))];
@@ -37,6 +42,14 @@ export class AppComponent {
     this.array = [];
     this.length = 0;
 
+    this.temp = [];
+    this.users =  [
+      { name: 'John', userId: 12, m1:55, m2:79, m3:85 },
+      new User('John', 12, 55, 79, 85),
+      { name: 'Peter', userId: 25, m1:35, m2:50, m3:65 },
+      { name: 'Brij', userId: 27, m1:85, m2:90, m3:92 },
+       ];
+    
     setTimeout(()=>{
       this.isDisabled = false;
     },2000);
@@ -51,7 +64,7 @@ export class AppComponent {
   }
 
   onSave(): void{
-     this.savedMessage = "Message Saved";
+     this.savedMessage = `Message Saved ${ this.firstName }`;
   }
 
   onToogle(): void{
@@ -75,5 +88,23 @@ export class AppComponent {
   onAddElement(): void{
     this.array.push(1);
   }
+
+  onClick(): void {
+    this.temp.push("still transferring");
+  }
+  
+  getMarkColor(mark: number): string {
+
+    if (mark >= 75) { 
+      return 'green'; 
+    } else if(mark >= 50 && mark < 75) {
+      //color Amber
+      return '#FFBF00'; 
+    }
+    else{
+      return 'red'; 
+    }
+  }
+  
 
 }

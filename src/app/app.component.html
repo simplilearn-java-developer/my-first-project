@@ -61,3 +61,48 @@
  </div>
  <button (click)="onAddElement()">Add Element</button>
 
+ <h2>NgClass</h2>
+ <div [ngClass]="{'text-border': false}">
+     This text has no border
+ </div>
+ <div [ngClass]="{'text-border': true}">
+        This text has border
+ </div>
+ <h2>NgClass - Dynamic</h2>
+ <div>
+    <button (click)="onClick()">Status</button>
+    <div *ngFor="let t of temp; let i = index">
+        <span [ngClass]="{'text-border-2': i > 5}">( {{ t }} )</span>
+    </div>
+</div>
+<h2>NgStyle</h2>
+<div>
+    <div [ngStyle]="{'font-style': 'italic', 'color': 'white', 'background': 'blue'}">
+       Text style using ngStyle
+    </div>
+</div>
+<h2>NgStyle - Dynamic</h2>
+<div>
+    <h2 [ngStyle]="{'font-size.px': 30}">User Details</h2>
+    <table>
+        <tr>
+	      <th>Name</th>
+          <th>User Id</th>
+	      <th>M1</th>
+	      <th>M2</th>
+	      <th>M3</th>
+	    </tr>
+	    <tr *ngFor="let user of users">
+	      <td>{{ user.name }}</td>
+	      <td>{{ user.userId }}</td>
+ 	      <td [ngStyle]="{'color':getMarkColor(user.m1)}">({{ user.m1 }})</td>
+ 	      <td [ngStyle]="{'color':getMarkColor(user.m2)}">({{ user.m2 }})</td>
+ 	      <td [ngStyle]="{'color':getMarkColor(user.m3)}">({{ user.m3 }})</td>
+	    </tr>
+     </table>
+</div>
+
+  
+  
+    
+
