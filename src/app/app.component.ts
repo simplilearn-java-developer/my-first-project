@@ -31,6 +31,9 @@ export class AppComponent {
 	length: number;
 
   temp: string[];
+
+  messageParent: string;
+  messageChild: string;
 	
   constructor(){
     this.product = <Product>{};
@@ -50,6 +53,10 @@ export class AppComponent {
       { name: 'Brij', userId: 27, m1:85, m2:90, m3:92 },
        ];
     
+    this.messageParent = "";
+    this.messageChild = "";
+
+
     setTimeout(()=>{
       this.isDisabled = false;
     },2000);
@@ -105,6 +112,13 @@ export class AppComponent {
       return 'red'; 
     }
   }
+
+  sendMessage():void{
+     this.messageParent = "message from the Parent"
+  }
   
+  receiveMessage(message: string): void {
+    this.messageChild = message;
+  }
 
 }
